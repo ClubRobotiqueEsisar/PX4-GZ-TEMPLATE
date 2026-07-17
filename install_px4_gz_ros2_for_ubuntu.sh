@@ -1,4 +1,5 @@
 #!/bin/bash
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
 set -x
 
@@ -90,7 +91,9 @@ if [ -d "$folder" ]; then
 fi
 
 
-bash ./Tools/setup/ubuntu.sh --no-sim-tools
+cp -r "$SCRIPT_DIR/PX4-Autopilot_PATCH/Tools" "$PX4_DIR/"
+
+bash $PX4_DIR/Tools/setup/ubuntu.sh --no-sim-tools
 make px4_sitl
 
 
