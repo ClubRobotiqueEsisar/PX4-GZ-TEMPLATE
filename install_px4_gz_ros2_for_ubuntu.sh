@@ -25,7 +25,7 @@ sudo apt-get install gz-harmonic -y
 
 cd
 sudo apt-get install git python3-pip -y
-git clone --depth 1 --branch release/v1.17 https://github.com/PX4/PX4-Autopilot.git --recursive
+git clone --branch release/v1.17 https://github.com/PX4/PX4-Autopilot.git --recursive
 cd PX4-Autopilot/
 
 bash ./Tools/setup/ubuntu.sh --no-sim-tools
