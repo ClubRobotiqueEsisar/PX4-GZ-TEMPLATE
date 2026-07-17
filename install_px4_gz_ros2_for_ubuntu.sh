@@ -25,10 +25,6 @@ sudo apt-get install gz-harmonic -y
 
 cd
 sudo apt-get install git python3-pip -y
-<<<<<<< HEAD
-git clone --branch release/v1.17 https://github.com/PX4/PX4-Autopilot.git --recursive
-cd PX4-Autopilot/
-=======
 
 
 # ---------- PX4 installation ---------- #
@@ -93,7 +89,6 @@ if [ -d "$folder" ]; then
     done
 fi
 
->>>>>>> 975be17 (Delete MicroXRCEAgent patch)
 
 bash ./Tools/setup/ubuntu.sh --no-sim-tools
 make px4_sitl
