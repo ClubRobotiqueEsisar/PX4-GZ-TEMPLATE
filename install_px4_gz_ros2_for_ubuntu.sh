@@ -25,8 +25,75 @@ sudo apt-get install gz-harmonic -y
 
 cd
 sudo apt-get install git python3-pip -y
+<<<<<<< HEAD
 git clone --branch release/v1.17 https://github.com/PX4/PX4-Autopilot.git --recursive
 cd PX4-Autopilot/
+=======
+
+
+# ---------- PX4 installation ---------- #
+repo="git@github.com:PX4/PX4-Autopilot.git"
+folder="PX4-Autopilot"
+PX4_DIR="$(pwd)/$folder"
+
+
+# ---------- End PX4 installation ---------- #
+
+# Vérification que le dossier n'existe déja pas
+if [ -d "$folder" ]; then
+    while true; do
+        read -p "Le dossier $PX4_DIR existe déja. Voulez-vous le supprimer et choisir la version appropriée ? (Y/N) : " answer
+
+        case "${answer,,}" in
+            y)
+                rm -rf "$folder"
+                echo "Dossier supprimé."
+				# Clone
+				git clone "$repo" "$folder"
+
+				cd "$folder"
+
+				echo "Dépôt cloné dans : $(pwd)"
+
+				# Met à jour les branches distantes
+				git fetch --all --prune
+
+				# Sélection d'une branche
+				branch=$(git branch -a --color=never |
+					sed 's/^[* ]*//' |
+					sed 's#remotes/origin/##' |
+					sort -u |
+					fzf --prompt="Choisir une branche > ")
+
+				if [ -z "$branch" ]; then
+					echo "Aucune branche sélectionnée."
+					exit 0
+				fi
+
+				echo "Checkout de la branche : $branch"
+
+				git checkout "$branch"
+
+				echo "Branche active : $(git branch --show-current)"
+
+				# Update git submodules
+				git submodule update --init --recursive
+
+                break
+                ;;
+            n)
+				cd "$folder"
+				echo "Branche active : $(git branch --show-current)"
+                break
+                ;;
+            *)
+                echo "Veuillez répondre par Y ou N."
+                ;;
+        esac
+    done
+fi
+
+>>>>>>> 975be17 (Delete MicroXRCEAgent patch)
 
 bash ./Tools/setup/ubuntu.sh --no-sim-tools
 make px4_sitl
