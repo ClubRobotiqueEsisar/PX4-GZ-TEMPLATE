@@ -37,12 +37,12 @@ PX4_DIR="$(pwd)/$folder"
 
 # git clone
 cd
-git clone -b release/v1.17 "$repo" --recursive
+git clone -b release/1.17 "$repo" --recursive
 
 
 # ---------- Fin du Selecteur de branche PX4 ---------- #
 
-
+cd $PX4_DIR/
 cp -r "$SCRIPT_DIR/PX4-Autopilot_PATCH/Tools" "$PX4_DIR/"
 
 bash $PX4_DIR/Tools/setup/ubuntu.sh --no-sim-tools
