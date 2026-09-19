@@ -22,12 +22,23 @@ sudo apt-get install gz-harmonic -y
 
 # ---------- END Gazebo Install ---------- #
 
+
+# ---------- PX4 Install ---------- #
+cd "$SCRIPT_DIR/.."
+git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+cd PX4-Autopilot
+
+git checkout release/1.17
+
+
+# ---------- END PX4 Install ---------- #
+
+
 # ---------- PX4 Setup ---------- #
 
 sudo apt-get install python3-pip -y
 
 
-cd $PX4_DIR/
 cp -r "$SCRIPT_DIR/PX4-Autopilot_PATCH/Tools" "$PX4_DIR/"
 
 bash $PX4_DIR/Tools/setup/ubuntu.sh --no-sim-tools
