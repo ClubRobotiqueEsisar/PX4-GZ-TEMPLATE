@@ -25,10 +25,11 @@ sudo apt-get install gz-harmonic -y
 
 # ---------- PX4 Install ---------- #
 cd "$SCRIPT_DIR/.."
-git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+git clone https://github.com/PX4/PX4-Autopilot.git
 cd PX4-Autopilot
 
 git checkout release/1.17
+git submodule update --init --recursive
 
 
 # ---------- END PX4 Install ---------- #
