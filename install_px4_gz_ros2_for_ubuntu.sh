@@ -1,6 +1,6 @@
 #!/bin/bash
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
-PX4_DIR="$SCRIPT_DIR/.."
+PX4_DIR="$SCRIPT_DIR/../PX4-Autopilot"
 
 set +e
 sudo apt-get update -y
